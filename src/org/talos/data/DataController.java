@@ -13,7 +13,7 @@ public class DataController {
 	String dbName = "talos";
 	String driver = "com.mysql.jdbc.Driver";
     String userName = "root"; 
-	String password = "";
+	String password = "root";
     Connection connect = null;
 	//Statement statement = null;
 	//PreparedStatement preparedStatement = null;
@@ -51,7 +51,7 @@ public class DataController {
 			 	connect = DriverManager.getConnection(url+dbName,userName,password);
 			 	System.out.println("Connected to the database");
 			 	
-			 	PreparedStatement insertData = connect.prepareStatement("INSERT INTO `data` (`Time_Stamp`,`User`,`Operator`,`Cinr`,`Latitude`,`Longtitude`) VALUES (?,?,?,?,?,?)");
+			 	PreparedStatement insertData = connect.prepareStatement("INSERT INTO `DATA` (`Time_Stamp`,`User`,`Operator`,`Cinr`,`Latitude`,`Longitude`) VALUES (?,?,?,?,?,?)");
 			 	
 			 	insertData.setString(1, item.getTimestamp());
 			 	insertData.setString(2, item.getUser());
