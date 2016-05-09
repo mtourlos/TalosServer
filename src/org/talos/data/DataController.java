@@ -13,7 +13,7 @@ public class DataController {
 	String dbName = "talos";
 	String driver = "com.mysql.jdbc.Driver";
     String userName = "root"; 
-	String password = "root";
+	String password = "";
     Connection connect = null;
 	//Statement statement = null;
 	//PreparedStatement preparedStatement = null;
