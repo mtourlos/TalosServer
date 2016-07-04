@@ -5,8 +5,18 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Data class
+ * @author michaeltourlos
+ */
 @XmlRootElement
 public class Data implements Serializable {
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
 	private String timestamp;
 	private String user;
 	private String operator;
@@ -17,6 +27,17 @@ public class Data implements Serializable {
 	
 	public Data() {
 		super();
+	}
+	
+	public Data(String timestamp, String user, String operator, int cinr, float latitude, float longitude){
+		this.
+	}
+	
+	public Integer getId(){
+		return id;
+	}
+	public void setId(Integer id){
+		this.id = id;
 	}
 	public String getTimestamp() {
 		return timestamp;

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.talos.data.Data" table="data" catalog="talos">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="timestamp" type="timestamp">
+            <column name="Time_Stamp" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="user" type="string">
+            <column name="User" length="45" not-null="true" unique="false" />
+        </property>
+        <property name="operator" type="string">
+            <column name="Operator" length="45" not-null="true" unique="false" />
+        </property>
+        <property name="cinr" type="java.lang.Integer">
+            <column name="Cinr" not-null="false" unique="false" />
+        </property>
+        <property name="latitude" type="float">
+            <column name="Latitude" not-null="false" unique="false" />
+        </property>
+        <property name="longitude" type="float">
+            <column name="Longitude" not-null="false" unique="false" />
+        </property>
+    </class>
+</hibernate-mapping>
