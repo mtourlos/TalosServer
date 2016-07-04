@@ -20,6 +20,7 @@ public class Data implements Serializable {
 	private String timestamp;
 	private String user;
 	private String operator;
+	private String networkType;
 	private int cinr;
 	private float latitude;
 	private float longtitude;
@@ -30,7 +31,6 @@ public class Data implements Serializable {
 	}
 	
 	public Data(String timestamp, String user, String operator, int cinr, float latitude, float longitude){
-		this.
 	}
 	
 	public Integer getId(){
@@ -56,6 +56,12 @@ public class Data implements Serializable {
 	}
 	public void setOperator(String operator) {
 		this.operator = operator;
+	}
+	public String getNetworkType(){
+		return networkType;
+	}
+	public void setNetworkType(String networkType){
+		this.networkType = networkType;
 	}
 	public int getCinr() {
 		return cinr;

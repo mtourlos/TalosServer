@@ -13,7 +13,7 @@ public class DataController {
 	String dbName = "talos";
 	String driver = "com.mysql.jdbc.Driver";
     String userName = "root"; 
-	String password = "";
+	String password = "root";
     Connection connect = null;
 	//Statement statement = null;
 	//PreparedStatement preparedStatement = null;
@@ -49,16 +49,17 @@ public class DataController {
 			
 			try {
 			 	connect = DriverManager.getConnection(url+dbName,userName,password);
-			 	System.out.println("Connected to the database");
+			 	System.out.println("Connected to database");
 			 	
-			 	PreparedStatement insertData = connect.prepareStatement("INSERT INTO `DATA` (`Time_Stamp`,`User`,`Operator`,`Cinr`,`Latitude`,`Longitude`) VALUES (?,?,?,?,?,?)");
+			 	PreparedStatement insertData = connect.prepareStatement("INSERT INTO `DATA` (`Time_Stamp`,`User`,`Operator`,`Network_Type`,`Cinr`,`Latitude`,`Longitude`) VALUES (?,?,?,?,?,?,?)");
 			 	
 			 	insertData.setString(1, item.getTimestamp());
 			 	insertData.setString(2, item.getUser());
 			 	insertData.setString(3, item.getOperator());
-			 	insertData.setInt(4, item.getCinr());
-			 	insertData.setFloat(5, item.getLatitude());
-			 	insertData.setFloat(6, item.getLongtitude());
+			 	insertData.setString(4, item.getNetworkType());
+			 	insertData.setInt(5, item.getCinr());
+			 	insertData.setFloat(6, item.getLatitude());
+			 	insertData.setFloat(7, item.getLongtitude());
 			 	
 			 	int insertUserResult=insertData.executeUpdate();
 			 	if (insertUserResult>0) 

@@ -14,7 +14,6 @@ import com.sun.jersey.spi.resource.Singleton;
 public class Service {
 	private UserController userC = new UserController();
 	private DataController dataC = new DataController();
-	private DataController dataC2 = new DataController();
 	//private Response resp = new Response();
 	
 	@Path("/signup")
@@ -119,12 +118,8 @@ public class Service {
 	@Produces("application/json")
 	public Response insertDatas(Data[] data){
 		int result =2;
-		int counter=0;
 		int length=data.length;
 		System.out.println("Size of list:"+length);
-		//for (counter=0;counter>length;counter++){
-		//	result=dataC.insertData(data[counter]);
-		//}
 		result = dataC.insertData(data);
 		
 		Response resp = new Response();
