@@ -12,7 +12,7 @@ public class UserController {
 	String dbName = "talos";
 	String driver = "com.mysql.jdbc.Driver";
     String userName = "root"; 
-	String password = "";
+	String password = "root";
     Connection connect = null;
 	//Statement statement = null;
 	//PreparedStatement preparedStatement = null;

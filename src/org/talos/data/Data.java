@@ -7,9 +7,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Data implements Serializable {
-	private String timestamp;
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String timeStamp;
 	private String user;
 	private String operator;
+	private String networkType;
 	private int cinr;
 	private float latitude;
 	private float longtitude;
@@ -19,10 +25,10 @@ public class Data implements Serializable {
 		super();
 	}
 	public String getTimestamp() {
-		return timestamp;
+		return timeStamp;
 	}
-	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
+	public void setTimestamp(String timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 	public String getUser() {
 		return user;
@@ -35,6 +41,12 @@ public class Data implements Serializable {
 	}
 	public void setOperator(String operator) {
 		this.operator = operator;
+	}
+	public String getNetworkType(){
+		return networkType;
+	}
+	public void setNetworkType(String networkType){
+		this.networkType = networkType;
 	}
 	public int getCinr() {
 		return cinr;
