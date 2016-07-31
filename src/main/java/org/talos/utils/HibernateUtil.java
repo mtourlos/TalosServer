@@ -10,7 +10,7 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
-        	Configuration configuration = new Configuration().configure("/org/talos/hibernate/hibernate.cfg.xml");
+        	Configuration configuration = new Configuration().configure("org/talos/hibernate/hibernate.cfg.xml");
             return configuration.buildSessionFactory();
         }
         catch (Throwable ex) {

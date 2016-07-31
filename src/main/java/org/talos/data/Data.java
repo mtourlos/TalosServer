@@ -1,7 +1,7 @@
 package org.talos.data;
 
 import java.io.Serializable;
-
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,20 +17,20 @@ public class Data implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private String timestamp;
+	private Date timestamp;
 	private String user;
 	private String operator;
 	private String networkType;
 	private int cinr;
 	private float latitude;
-	private float longtitude;
+	private float longitude;
 	
 	
 	public Data() {
 		super();
 	}
 	
-	public Data(String timestamp, String user, String operator, int cinr, float latitude, float longitude){
+	public Data(String timestamp, String user, String operator, String networkType, int cinr, float latitude, float longitude){
 	}
 	
 	public Integer getId(){
@@ -39,10 +39,10 @@ public class Data implements Serializable {
 	public void setId(Integer id){
 		this.id = id;
 	}
-	public String getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 	public String getUser() {
@@ -75,11 +75,11 @@ public class Data implements Serializable {
 	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
-	public float getLongtitude() {
-		return longtitude;
+	public float getLongitude() {
+		return longitude;
 	}
-	public void setLongtitude(float longtitude) {
-		this.longtitude = longtitude;
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
 	}
 	
 

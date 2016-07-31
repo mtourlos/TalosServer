@@ -1,9 +1,11 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
 
 <hibernate-mapping>
-    <class name="org.talos.data.Data" table="data" catalog="talos">
+    <class name="org.talos.data.Data" table="DATA" catalog="talos">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
@@ -16,6 +18,9 @@
         </property>
         <property name="operator" type="string">
             <column name="Operator" length="45" not-null="true" unique="false" />
+        </property>
+        <property name="networkType" type="string">
+            <column name="Network_Type" length="45" not-null="true" unique="false" />
         </property>
         <property name="cinr" type="java.lang.Integer">
             <column name="Cinr" not-null="false" unique="false" />

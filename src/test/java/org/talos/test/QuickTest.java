@@ -1,24 +1,30 @@
 package org.talos.test;
 
+
+import java.util.Date;
+
 import org.hibernate.Session;
+import org.junit.Test;
 import org.talos.data.Data;
 import org.talos.utils.HibernateUtil;
 
 public class QuickTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void main() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Data d = new Data();
 		d.setCinr(1);
-		d.setId(1);
-		d.setLatitude(3f);
-		d.setLongtitude(4f);
+ 		d.setLatitude(3f);
+		d.setLongitude(4f);
 		d.setOperator("COMOSTE");
-		d.setTimestamp("2016-02-02 00:00:00");
+		d.setTimestamp(new Date());
+		d.setNetworkType("LTE");
 		d.setUser("user");
 		session.save(d);
 		session.getTransaction().commit();
+		HibernateUtil.shutdown();
 	}
 
-}
+} 	
