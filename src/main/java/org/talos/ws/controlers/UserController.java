@@ -1,10 +1,12 @@
-package org.talos.user;
+package org.talos.ws.controlers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.talos.po.User;
 
 public class UserController {
 	

@@ -1,4 +1,4 @@
-package org.talos.user;
+package org.talos.po;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;

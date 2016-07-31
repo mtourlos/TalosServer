@@ -1,11 +1,13 @@
 package org.talos.test;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.hibernate.Session;
 import org.junit.Test;
-import org.talos.data.Data;
+import org.talos.po.Data;
 import org.talos.utils.HibernateUtil;
 
 public class QuickTest {
@@ -25,6 +27,12 @@ public class QuickTest {
 		session.save(d);
 		session.getTransaction().commit();
 		HibernateUtil.shutdown();
+	}
+	
+	@Test
+	public void test() throws ParseException{
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println(formatter.parse("2016-05-18 22:45:44"));
 	}
 
 } 	

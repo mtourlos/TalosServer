@@ -1,4 +1,4 @@
-package org.talos.data;
+package org.talos.po;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,16 +21,13 @@ public class Data implements Serializable {
 	private String user;
 	private String operator;
 	private String networkType;
-	private int cinr;
+	private Integer cinr;
 	private float latitude;
 	private float longitude;
 	
 	
 	public Data() {
 		super();
-	}
-	
-	public Data(String timestamp, String user, String operator, String networkType, int cinr, float latitude, float longitude){
 	}
 	
 	public Integer getId(){
@@ -63,10 +60,10 @@ public class Data implements Serializable {
 	public void setNetworkType(String networkType){
 		this.networkType = networkType;
 	}
-	public int getCinr() {
+	public Integer getCinr() {
 		return cinr;
 	}
-	public void setCinr(int cinr) {
+	public void setCinr(Integer cinr) {
 		this.cinr = cinr;
 	}
 	public float getLatitude() {
@@ -81,6 +78,5 @@ public class Data implements Serializable {
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
-	
 
 }
