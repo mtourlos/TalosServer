@@ -15,6 +15,15 @@
   	<servlet-name>Talos Service</servlet-name>
   	<url-pattern>/service/*</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>addservlet</servlet-name>            
+    <servlet-class>org.talos.servlet.AddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addservlet</servlet-name>
+    <url-pattern>/addservlet</url-pattern>
+  </servlet-mapping>
   	
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
