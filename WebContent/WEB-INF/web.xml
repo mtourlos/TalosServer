@@ -17,12 +17,21 @@
   </servlet-mapping>
   
    <servlet>
-    <servlet-name>addservlet</servlet-name>            
+    <servlet-name>addServlet</servlet-name>            
     <servlet-class>org.talos.servlet.AddServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>addservlet</servlet-name>
+    <servlet-name>addServlet</servlet-name>
     <url-pattern>/addservlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>fetchDataServlet</servlet-name>            
+    <servlet-class>org.talos.servlet.FetchDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fetchDataServlet</servlet-name>
+    <url-pattern>/fetchdataservlet</url-pattern>
   </servlet-mapping>
   	
   <welcome-file-list>

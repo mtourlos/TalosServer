@@ -1,18 +1,24 @@
 package org.talos.test;
 
 
+import java.lang.reflect.Field;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 import org.hibernate.Session;
+import org.json.JSONObject;
 import org.junit.Test;
 import org.talos.po.Data;
 import org.talos.utils.HibernateUtil;
+import org.talos.utils.SqlUtil;
+import org.talos.ws.beans.DataBean;
 
 public class QuickTest {
 
-	@Test
+//	@Test
 	public void main() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
@@ -29,10 +35,44 @@ public class QuickTest {
 		HibernateUtil.shutdown();
 	}
 	
-	@Test
+//	@Test
 	public void test() throws ParseException{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		System.out.println(formatter.parse("2016-05-18 22:45:44"));
+	}
+	
+//	@Test
+	public void testSql() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
+		SqlUtil sql = new SqlUtil();
+		Set<Data> results = sql.fetchData();
+		for (Data d :results){
+			System.out.println(d.getId());
+		}
+		JSONObject j = new JSONObject();
+		j.put("datas", results);
+		System.out.println(String.valueOf(j));
+			
+	}
+	
+	@Test
+	public void testReflection(){
+		DataBean data = new DataBean();
+		for (Field f : data.getClass().getDeclaredFields()){
+            f.setAccessible(true);
+            try {
+				if (f.get(data) == null) {
+					System.out.println(f.getName());
+				    System.out.println(true);
+				}
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        System.out.println(false);
 	}
 
 } 	
