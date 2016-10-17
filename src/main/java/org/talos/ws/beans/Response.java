@@ -14,9 +14,9 @@ public class Response implements Serializable {
 	
 	private static final String FAIL_MESSAGE = "Operation Failed";
 	
-	private int serviceId;
-	private boolean isOperationSuccess;
-	private String message;
+	int serviceId;
+	boolean isOperationSuccess;
+	String message;
 	
 	public int getServiceId() {
 		return serviceId;

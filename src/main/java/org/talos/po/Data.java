@@ -16,14 +16,15 @@ public class Data implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
-	private Date timestamp;
-	private String user;
-	private String operator;
-	private String networkType;
-	private Integer cinr;
-	private float latitude;
-	private float longitude;
+	Integer id;
+	String email;
+	Date timestamp;
+	String user;
+	String operator;
+	String networkType;
+	Integer cinr;
+	Float latitude;
+	Float longitude;
 	
 	
 	public Data() {
@@ -35,6 +36,12 @@ public class Data implements Serializable {
 	}
 	public void setId(Integer id){
 		this.id = id;
+	}
+	public String getEmail(){
+		return email;
+	}
+	public void setEmail(String email){
+		this.email = email;
 	}
 	public Date getTimestamp() {
 		return timestamp;

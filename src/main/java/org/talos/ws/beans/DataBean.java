@@ -1,7 +1,6 @@
 package org.talos.ws.beans;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -16,13 +15,13 @@ public class DataBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String timestamp;
-	private String user;
-	private String operator;
-	private String networkType;
-	private int cinr;
-	private float latitude;
-	private float longitude;
+	String timestamp;
+	String user;
+	String operator;
+	String networkType;
+	Integer cinr;
+	Float latitude;
+	Float longitude;
 	
 	
 	
@@ -54,22 +53,22 @@ public class DataBean implements Serializable {
 	public void setNetworkType(String networkType){
 		this.networkType = networkType;
 	}
-	public int getCinr() {
+	public Integer getCinr() {
 		return cinr;
 	}
-	public void setCinr(int cinr) {
+	public void setCinr(Integer cinr) {
 		this.cinr = cinr;
 	}
-	public float getLatitude() {
+	public Float getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(float latitude) {
+	public void setLatitude(Float latitude) {
 		this.latitude = latitude;
 	}
-	public float getLongitude() {
+	public Float getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(float longitude) {
+	public void setLongitude(Float longitude) {
 		this.longitude = longitude;
 	}
 	

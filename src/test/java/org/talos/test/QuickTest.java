@@ -6,23 +6,26 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.hibernate.Session;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.talos.po.Data;
+import org.talos.po.User;
 import org.talos.utils.HibernateUtil;
 import org.talos.utils.SqlUtil;
 import org.talos.ws.beans.DataBean;
 
 public class QuickTest {
 
-//	@Test
+	@Test
 	public void main() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Data d = new Data();
+		d.setEmail("sdafadf");
 		d.setCinr(1);
  		d.setLatitude(3f);
 		d.setLongitude(4f);
@@ -33,6 +36,43 @@ public class QuickTest {
 		session.save(d);
 		session.getTransaction().commit();
 		HibernateUtil.shutdown();
+	}
+	
+	@Test
+	public void testUser() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		User u = new User();
+		u.setEmail("michaeltourlos@gmail.com");
+		u.setConnectedDate(new Date());
+		u.setFirstName("Michail");
+		u.setLastName("Tourlos");
+		u.setPoints(1L);
+		Data d = new Data();
+		d.setEmail("michaeltourlos@gmail.com");
+		d.setCinr(1);
+ 		d.setLatitude(3f);
+		d.setLongitude(4f);
+		d.setOperator("COMOSTE");
+		d.setTimestamp(new Date());
+		d.setNetworkType("LTE");
+		d.setUser("user");
+		u.setDatas(new HashSet<Data>());
+		u.getDatas().add(d);
+		session.save(u);
+		session.getTransaction().commit();
+		HibernateUtil.shutdown();
+	}
+	
+	@Test
+	public void testRead(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		User u = new User();
+		u.setEmail("michaeltourlos@gmail.com");
+		u = (User) session.load(User.class, "michaeltourlos@gmail.com");
+		System.out.println(u.getDatas().size());
+		System.out.println(u.getFirstName());
 	}
 	
 //	@Test
@@ -59,9 +99,9 @@ public class QuickTest {
 		DataBean data = new DataBean();
 		for (Field f : data.getClass().getDeclaredFields()){
             f.setAccessible(true);
+            System.out.println("***"+f.getName());
             try {
 				if (f.get(data) == null) {
-					System.out.println(f.getName());
 				    System.out.println(true);
 				}
 			} catch (IllegalArgumentException e) {

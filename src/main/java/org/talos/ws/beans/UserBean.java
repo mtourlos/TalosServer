@@ -1,14 +1,15 @@
-package org.talos.po;
+package org.talos.ws.beans;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class User implements Serializable {
-	
+public class UserBean implements Serializable{
+
 	/**
 	 * serialVersionUID
 	 */
@@ -17,9 +18,7 @@ public class User implements Serializable {
 	String email;
 	String firstName;
 	String lastName;
-	Date connectedDate;
-	Long points; 
-	Set<Data> datas;
+	Date d;
 	
 	public String getEmail() {
 		return email;
@@ -39,23 +38,16 @@ public class User implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getConnectedDate(){
-		return connectedDate;
+	public void setDate(String date){
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			d = formatter.parse(date) ;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
-	public void setConnectedDate(Date connectedDate){
-		this.connectedDate = connectedDate;
+	public String getDate(){
+		return d.toString();
 	}
-	public Long getPoints(){
-		return points;
-	}
-	public void setPoints(Long points){
-		this.points = points;
-	}
-	public Set<Data> getDatas(){
-		return datas;
-	}
-	public void setDatas(Set<Data> datas){
-		this.datas = datas;
-	}
+	
 }
-

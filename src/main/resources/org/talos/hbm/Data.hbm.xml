@@ -6,12 +6,21 @@
 
 <hibernate-mapping>
     <class name="org.talos.po.Data" table="DATA" catalog="talos">
-        <id name="id" type="java.lang.Integer">
+        <composite-id>
+			<key-property name="id" type="java.lang.Integer" >
+				<column name="Id" not-null="true" />
+			</key-property>
+			<key-property name="email" type="string" length="45">
+				<column name="Email" not-null="true" />
+			</key-property>
+		</composite-id>
+        
+        <!-- <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
-        </id>
+        </id> -->
         <property name="timestamp" type="timestamp">
-            <column name="Time_Stamp" length="10" not-null="true" unique="true" />
+            <column name="TimeStamp" length="10" not-null="true" unique="true" />
         </property>
         <property name="user" type="string">
             <column name="User" length="45" not-null="true" unique="false" />
@@ -20,7 +29,7 @@
             <column name="Operator" length="45" not-null="true" unique="false" />
         </property>
         <property name="networkType" type="string">
-            <column name="Network_Type" length="45" not-null="true" unique="false" />
+            <column name="NetworkType" length="45" not-null="true" unique="false" />
         </property>
         <property name="cinr" type="java.lang.Integer">
             <column name="Cinr" not-null="false" unique="false" />

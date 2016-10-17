@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+
+<hibernate-mapping>
+    <class name="org.talos.po.User" table="USER" catalog="talos">
+        <id name="email" type="string">
+            <column name="EMAIL" length="45" not-null="true"  unique="true"/>
+        </id>
+        <property name="firstName" type="string">
+            <column name="FirstName" length="45" not-null="true" unique="false" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LastName" length="45" not-null="true" unique="false" />
+        </property>
+        <property name="connectedDate" type="timestamp">
+            <column name="ConnectedDate" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="points" type="long">
+            <column name="Points" not-null="false" unique="false" />
+        </property>
+        <set name="datas" cascade="all,delete-orphan" inverse="true">
+			<key not-null="true">
+				<column name="email" sql-type="string" not-null="true" />
+			</key>
+			<one-to-many class="org.talos.po.Data" />
+		</set>
+    </class>
+</hibernate-mapping>
