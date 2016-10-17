@@ -3,10 +3,20 @@ package org.talos.utils;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Utility class for hibernate
+ */
 public class HibernateUtil {
 
+    /**
+     * {@link SessionFactory}
+     */
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
+    /**
+     * Builds the {@link SessionFactory}
+     * @return {@link SessionFactory}
+     */
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
@@ -20,10 +30,17 @@ public class HibernateUtil {
         }
     }
 
+    /**
+     * Gets the {@link SessionFactory}
+     * @return the {@link SessionFactory}
+     */
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
     
+    /**
+     * Closes the {@link SessionFactory}
+     */
     public static void shutdown() {
     	// Close caches and connection pools
     	getSessionFactory().close();

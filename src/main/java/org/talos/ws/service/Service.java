@@ -5,36 +5,55 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import org.talos.operations.StoreDataOperation;
+import org.talos.operations.RegisterUserOperation;
+import org.talos.po.Data;
 import org.talos.po.User;
 import org.talos.ws.beans.DataBean;
 import org.talos.ws.beans.Response;
 import org.talos.ws.beans.UserBean;
-import org.talos.ws.controlers.DataController;
-import org.talos.ws.controlers.UserController;
 
 import com.sun.jersey.spi.resource.Singleton;
 
 
+/**
+ * Main Web Service Class
+ */
 @Singleton
 @Path("/userservice")
 public class Service {
-	private UserController userC = new UserController();
-	private DataController dataC = new DataController();
 	
-	@Path("/signup")
+	
+	/**
+	 * {@link RegisterUserOperation}
+	 */
+	RegisterUserOperation storeUserOp = new RegisterUserOperation();
+	
+	/**
+	 * {@link StoreDataOperation}
+	 */
+	StoreDataOperation storeDataOp = new StoreDataOperation();
+	
+	/**
+	 * Registers a {@link User}
+	 * 
+	 * @param userBean
+	 * @return a {@link Response}
+	 */
+	@Path("/register")
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response signUpUser(UserBean user){
-		System.out.println(user.getEmail());
-		System.out.println(user.getFirstName());
-		System.out.println(user.getLastName());
-		System.out.println(user.getDate().toString());
-		Response resp = new Response();
-		resp.setServiceId(0);
-		return resp;
+	public Response registerUser(UserBean userBean){
+		return storeUserOp.execute(userBean);
 	}
 	
+	/**
+	 * Upload {@link Data}
+	 * 
+	 * @param dataTable
+	 * @return a {@link Response}
+	 */
 	@Path("/datas")
 	@POST
 	@Consumes("application/json")
@@ -42,6 +61,6 @@ public class Service {
 	public Response uploadDatas(DataBean[] dataTable){
 		int length=dataTable.length;
 		System.out.println("Size of list:"+length);
-		return dataC.uploadData(dataTable);
+		return storeDataOp.execute(dataTable);
 	}
 }

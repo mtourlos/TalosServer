@@ -10,13 +10,13 @@
             <column name="EMAIL" length="45" not-null="true"  unique="true"/>
         </id>
         <property name="firstName" type="string">
-            <column name="FirstName" length="45" not-null="true" unique="false" />
+            <column name="First_Name" length="45" not-null="true" unique="false" />
         </property>
         <property name="lastName" type="string">
-            <column name="LastName" length="45" not-null="true" unique="false" />
+            <column name="Last_Name" length="45" not-null="true" unique="false" />
         </property>
         <property name="connectedDate" type="timestamp">
-            <column name="ConnectedDate" length="10" not-null="true" unique="true" />
+            <column name="Connected_Date" length="10" not-null="true" unique="true" />
         </property>
         <property name="points" type="long">
             <column name="Points" not-null="false" unique="false" />

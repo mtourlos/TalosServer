@@ -14,14 +14,18 @@ import org.json.JSONObject;
 import org.junit.Test;
 import org.talos.po.Data;
 import org.talos.po.User;
+import org.talos.queries.FetchDataQuery;
+import org.talos.queries.FetchTopUsersQuery;
 import org.talos.utils.HibernateUtil;
-import org.talos.utils.SqlUtil;
 import org.talos.ws.beans.DataBean;
 
+/**
+ * Integration tests
+ */
 public class QuickTest {
 
 	@Test
-	public void main() {
+	public void testStoreData() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Data d = new Data();
@@ -32,14 +36,13 @@ public class QuickTest {
 		d.setOperator("COMOSTE");
 		d.setTimestamp(new Date());
 		d.setNetworkType("LTE");
-		d.setUser("user");
 		session.save(d);
 		session.getTransaction().commit();
 		HibernateUtil.shutdown();
 	}
 	
 	@Test
-	public void testUser() {
+	public void testStoreUser() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		User u = new User();
@@ -56,7 +59,6 @@ public class QuickTest {
 		d.setOperator("COMOSTE");
 		d.setTimestamp(new Date());
 		d.setNetworkType("LTE");
-		d.setUser("user");
 		u.setDatas(new HashSet<Data>());
 		u.getDatas().add(d);
 		session.save(u);
@@ -65,25 +67,25 @@ public class QuickTest {
 	}
 	
 	@Test
-	public void testRead(){
+	public void testReadUser(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		User u = new User();
 		u.setEmail("michaeltourlos@gmail.com");
-		u = (User) session.load(User.class, "michaeltourlos@gmail.com");
+		u = (User) session.load(User.class, "michaeltodddurlos@gmail.com");
 		System.out.println(u.getDatas().size());
 		System.out.println(u.getFirstName());
 	}
 	
-//	@Test
-	public void test() throws ParseException{
+	@Test
+	public void testPaseDate() throws ParseException{
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		System.out.println(formatter.parse("2016-05-18 22:45:44"));
 	}
 	
-//	@Test
-	public void testSql() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
-		SqlUtil sql = new SqlUtil();
+	@Test
+	public void testFetchData() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
+		FetchDataQuery sql = new FetchDataQuery();
 		Set<Data> results = sql.fetchData();
 		for (Data d :results){
 			System.out.println(d.getId());
@@ -91,7 +93,13 @@ public class QuickTest {
 		JSONObject j = new JSONObject();
 		j.put("datas", results);
 		System.out.println(String.valueOf(j));
-			
+	}
+	
+	@Test
+	public void testFetchTopUsers() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
+		FetchTopUsersQuery sql = new FetchTopUsersQuery();
+		Set<User> results = sql.fetchUsers();
+		System.out.println(results.size());
 	}
 	
 	@Test

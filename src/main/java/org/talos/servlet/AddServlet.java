@@ -12,6 +12,9 @@ import org.hibernate.Session;
 import org.talos.po.Data;
 import org.talos.utils.HibernateUtil;
 
+/**
+ * Servlet for testing
+ */
 public class AddServlet extends HttpServlet {
 
 	/**
@@ -30,7 +33,7 @@ public class AddServlet extends HttpServlet {
 		d.setOperator("COMOSTE");
 		d.setTimestamp(new Date());
 		d.setNetworkType("LTE");
-		d.setUser("user");
+		d.setEmail("user");
 		session.save(d);
 		session.getTransaction().commit();
 		resp.setContentType("text/plain");

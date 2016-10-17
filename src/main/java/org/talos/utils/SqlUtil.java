@@ -2,17 +2,23 @@ package org.talos.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.talos.po.Data;
 
 
+/**
+ * Utility class for SQL
+ */
 public class SqlUtil {
 	
+	/**
+	 * Connects to database
+	 * 
+	 * @return a {@link Connection}
+	 * @throws SQLException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws ClassNotFoundException
+	 */
 	public Connection connectToDatabase() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		String url = "jdbc:mysql://localhost:3306/";  
 		String dbName = "talos";
@@ -24,28 +30,12 @@ public class SqlUtil {
 	 	return connect;
 	}
 	
-	public Set<Data> fetchData() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException{
-		String q = "SELECT * FROM DATA;";
-		Connection connection = connectToDatabase();
-		Statement statement = connection.createStatement();
-		ResultSet rs = statement.executeQuery(q);
-		Set<Data> results = new HashSet<Data>();
-		while(rs.next()){
-			Data d = new Data();
-			d.setCinr(rs.getInt("CINR"));
-			d.setId(rs.getInt("ID"));
-			d.setLatitude(rs.getFloat("LATITUDE"));
-			d.setLongitude(rs.getFloat("LONGITUDE"));
-			d.setNetworkType(rs.getString("NETWORK_TYPE"));
-			d.setOperator(rs.getString("OPERATOR"));
-			d.setTimestamp(rs.getTimestamp("TIME_STAMP"));
-			d.setUser(rs.getString("USER"));
-			results.add(d);
-		}
-		disconnectFromDatabase(connection);
-		return results;
-	}
-	
+	/**
+	 * Closes the connection
+	 * 
+	 * @param connection
+	 * @throws SQLException
+	 */
 	public void disconnectFromDatabase(Connection connection) throws SQLException{
 		connection.close();
 	}
