@@ -40,7 +40,7 @@ public class Service {
 	 * @param userBean
 	 * @return a {@link Response}
 	 */
-	@Path("/register")
+	@Path("/registeruser")
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")

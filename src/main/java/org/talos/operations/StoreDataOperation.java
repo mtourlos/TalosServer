@@ -57,6 +57,7 @@ public class StoreDataOperation {
 				session.save(u);
 			}
 			transaction.commit();
+			System.out.println("*** Data uploaded from:" + dataTable[0].getUser());
 			return Response.getSuccessResponse(SERVICE_ID);
 		}catch(Exception e){
 			transaction.rollback();

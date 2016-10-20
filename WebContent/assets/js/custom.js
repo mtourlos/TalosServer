@@ -42,9 +42,26 @@
             /*====================================
                WRITE YOUR SCRIPTS BELOW 
            ======================================*/
-
+            
 
         },
+        
+        main_loadLeaderboard: function () {
+            $.ajax({
+                url: "fetchtopusersservlet",
+                type: 'GET',
+                dataType: 'json',
+         
+                success: function (dataJson) {
+                	$.each(dataJson.users, function (key, user) {
+                		var list = document.getElementById('usersList');
+                		var entry = document.createElement('li');
+                		entry.appendChild(document.createTextNode(user.email + "-" + user.points + "pts"));
+                		list.appendChild(entry);
+                    });
+                },
+            });
+        }, 
 
         initialization: function () {
             mainApp.main_fun();
@@ -56,6 +73,7 @@
 
     $(document).ready(function () {
         mainApp.main_fun();
+        mainApp.main_loadLeaderboard();
     });
 
 }(jQuery));

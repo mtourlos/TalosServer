@@ -39,6 +39,7 @@ public class RegisterUserOperation {
 		try{
 			session.save(transformUserBeanToPo(userBean));
 			transaction.commit();
+			System.out.println("*** User registered: " + userBean.getEmail());
 			return Response.getSuccessResponse(SERVICE_ID);
 		}catch(Exception e){
 			transaction.rollback();
