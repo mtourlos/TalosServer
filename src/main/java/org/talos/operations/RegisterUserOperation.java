@@ -37,15 +37,20 @@ public class RegisterUserOperation {
 	public Response execute(UserBean userBean){
 		initHibernate();
 		try{
-			session.save(transformUserBeanToPo(userBean));
-			transaction.commit();
-			System.out.println("*** User registered: " + userBean.getEmail());
+			User u = transformUserBeanToPo(userBean);
+			User loadedUser = (User) session.load(User.class, u.getEmail());
+			if (loadedUser == null){
+				session.save(transformUserBeanToPo(userBean));
+				transaction.commit();				
+				System.out.println("*** User registered: " + userBean.getEmail());
+			}
 			return Response.getSuccessResponse(SERVICE_ID);
-		}catch(Exception e){
+		}catch (Exception e){
 			transaction.rollback();
+			System.err.println(e);
 			return  Response.getFailResponse(SERVICE_ID);
-			
 		}
+			
 	}
 	
 	/**

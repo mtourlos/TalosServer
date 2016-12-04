@@ -122,5 +122,15 @@ public class QuickTest {
         }
         System.out.println(false);
 	}
+	
+	@Test
+	public void testFoo(){
+		String s1 = "Hello";
+		String s2 = new String(s1);
+		String s3 = new String("Hello");
+		System.out.println(s1.equals(s2));
+		System.out.println(s1==s2);
+		System.out.println(s1==s3);
+	}
 
 } 	
